@@ -16,13 +16,12 @@
 
 @interface JDFTooltipView ()
 
-@property (nonatomic, strong) UILabel *tooltipTextLabel;
 
 @property (nonatomic) CGPoint arrowPoint;
 @property (nonatomic) CGFloat width; // change to width?
 
 @property (nonatomic, weak) UIView *tooltipSuperview;
-@property (nonatomic, weak) UIView *targetView;
+
 @property (nonatomic, weak) UIBarButtonItem *targetBarButtonItem;
 
 @property (nonatomic, copy) void (^showCompletionBlock)();
@@ -228,6 +227,7 @@
             self.tooltipTextLabel.alpha = 1.0f;
         } completion:nil];
     } completion:^(BOOL finished) {
+        self.tooltipShown = YES;
         if (self.showCompletionBlock) {
             self.showCompletionBlock();
         }
@@ -269,6 +269,7 @@
         }];
     } else {
         [self removeFromSuperview];
+        self.tooltipShown = NO;
         if (self.hideCompletionBlock) {
             self.hideCompletionBlock();
         }

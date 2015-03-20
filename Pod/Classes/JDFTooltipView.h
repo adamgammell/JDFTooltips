@@ -96,6 +96,10 @@ typedef void (^JDFTooltipViewCompletionBlock)();
  */
 @property (nonatomic) BOOL dismissOnTouch;
 
+@property (nonatomic, strong) UILabel *tooltipTextLabel;
+@property (nonatomic, weak) UIView *targetView;
+@property (nonatomic) BOOL tooltipShown;
+
 
 #pragma mark Initialisation
 /**
